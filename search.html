@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Products - Grocery Store</title>
+
+    <link rel="icon" type="image/icon" href="image/favicon.png">
+
+    <!--code for font awesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--code for linking css file-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!--header section-->
+    <header class="header">
+        <a href="index.html" class="logo"><i class="fa fa-shopping-basket" aria-hidden="true"></i> grocery</a>
+
+        <nav class="navbar">
+            <a href="index.html">home</a>
+            <a href="index.html#features">features</a>
+            <a href="index.html#products">products</a>
+            <a href="index.html#review">review</a>
+            <a href="index.html#blogs">blogs</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fa fa-bars" id="menu-btn"></div>
+            <a href="search.html">
+                <div class="fa fa-search" id="search-btn"></div>
+            </a>
+            <a href="checkout.html">
+                <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            </a>
+            <a href="login.html">
+                <div class="fa fa-user" id="login-btn"></div>
+            </a>
+        </div>
+    </header>
+    <!--header section-->
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <h1 class="headding">search <span>products</span></h1>
+
+        <div class="search-container">
+            <form class="main-search-form" action="search.html" method="get">
+                <input type="search" id="main-search-box" name="query" placeholder="Search for products...">
+                <button type="submit" class="btn search-btn">Search</button>
+            </form>
+
+            <div class="filter-options">
+                <h3>Filter by Category:</h3>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="fruits">Fruits</button>
+                    <button class="filter-btn" data-category="vegetables">Vegetables</button>
+                    <button class="filter-btn" data-category="dairy">Dairy</button>
+                    <button class="filter-btn" data-category="grocery">Grocery</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="search-results" id="search-results">
+            <!-- Search results will be displayed here -->
+        </div>
+    </section>
+    <!-- End Search Section -->
+
+    <!--our footer section-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3> Groco <i class="fa fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media handlers. All
+                    the links are given below.
+                </p>
+                <div class="share">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3> contact info </h3>
+                <a href="#" class="links"> <i class="fa fa-phone"></i> +91 9875496843 </a>
+                <a href="#" class="links"> <i class="fa fa-phone"></i> +91 9853467876 </a>
+                <a href="#" class="links"> <i class="fa fa-envelope"></i> support@groco.com</a>
+                <a href="#" class="links"> <i class="fa fa-map-marker"></i> pune, india-400004 </a>
+            </div>
+
+            <div class="box">
+                <h3> Quick Links </h3>
+                <a href="index.html" class="links"> <i class="fa fa-arrow-right"></i> Home </a>
+                <a href="index.html#features" class="links"> <i class="fa fa-arrow-right"></i> Features </a>
+                <a href="index.html#products" class="links"> <i class="fa fa-arrow-right"></i> Products </a>
+                <a href="#" class="links"> <i class="fa fa-arrow-right"></i> Categories </a>
+                <a href="index.html#review" class="links"> <i class="fa fa-arrow-right"></i> Review </a>
+                <a href="index.html#blogs" class="links"> <i class="fa fa-arrow-right"></i> Blogs </a>
+            </div>
+
+            <div class="box">
+                <h3>Newsletter </h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" placeholder="your Email" class="email">
+                <input type="submit" value="Subscribe" class="btn" style="width:150px;">
+                <img src="image/payment.png" class="payment-img" alt="Payment Methods">
+            </div>
+        </div>
+        <div class="credit">created by <span>cyber warriors</span> | all rights reserved</div>
+    </section>
+    <!--our footer section-->
+
+    <script src="js/script.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+</html>

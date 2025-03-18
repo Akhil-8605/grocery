@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Grocery Store</title>
+
+    <link rel="icon" type="image/icon" href="image/favicon.png">
+
+    <!--code for font awesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--code for linking css file-->
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+</head>
+
+<body>
+    <!--header section-->
+    <header class="admin-header">
+        <a href="index.html" class="logo"><i class="fa fa-shopping-basket" aria-hidden="true"></i> grocery</a>
+        <h1>Admin Dashboard</h1>
+        <div class="admin-user">
+            <span id="admin-name">Admin</span>
+            <button id="logout-btn" class="logout-btn"><i class="fa fa-sign-out"></i> Logout</button>
+        </div>
+    </header>
+    <!--header section-->
+
+    <!-- Admin Section -->
+    <section class="admin-section">
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="users">
+                <i class="fa fa-users"></i> Users
+            </button>
+            <button class="tab-btn" data-tab="orders">
+                <i class="fa fa-shopping-cart"></i> Orders
+            </button>
+        </div>
+
+        <div class="admin-content">
+            <!-- Users Tab -->
+            <div class="tab-content active" id="users-tab">
+                <div class="tab-header">
+                    <h2>User Management</h2>
+                    <div class="search-container">
+                        <input type="text" id="user-search" placeholder="Search users...">
+                        <button id="user-search-btn"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+                <div class="data-container">
+                    <!-- Skeleton Loader for Users -->
+                    <div class="skeleton-loader" id="users-skeleton">
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                    </div>
+
+                    <!-- Users Table -->
+                    <table class="data-table" id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Last Login</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                            <!-- User data will be populated here -->
+                        </tbody>
+                    </table>
+
+                    <div class="no-data" id="no-users">
+                        <i class="fa fa-users"></i>
+                        <p>No users found</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div class="tab-content" id="orders-tab">
+                <div class="tab-header">
+                    <h2>Order Management</h2>
+                    <div class="search-container">
+                        <input type="text" id="order-search" placeholder="Search orders...">
+                        <button id="order-search-btn"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+
+                <div class="data-container">
+                    <!-- Skeleton Loader for Orders -->
+                    <div class="skeleton-loader" id="orders-skeleton">
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                        <div class="skeleton-row">
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                            <div class="skeleton-cell"></div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Table -->
+                    <table class="data-table" id="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Total</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                            <!-- Order data will be populated here -->
+                        </tbody>
+                    </table>
+
+                    <div class="no-data" id="no-orders">
+                        <i class="fa fa-shopping-cart"></i>
+                        <p>No orders found</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Admin Section -->
+
+    <!-- Order Details Modal -->
+    <div class="modal" id="order-details-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body" id="order-details-content">
+                <!-- Order details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+
+</html>

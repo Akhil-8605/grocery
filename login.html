@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Grocery Store</title>
+    <link rel="icon" type="image/icon" href="image/favicon.png">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Main CSS file -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <a href="index.html" class="logo"><i class="fa fa-shopping-basket" aria-hidden="true"></i> grocery</a>
+        <nav class="navbar">
+            <a href="index.html">home</a>
+            <a href="index.html#features">features</a>
+            <a href="index.html#products">products</a>
+            <a href="index.html#review">review</a>
+            <a href="index.html#blogs">blogs</a>
+        </nav>
+        <div class="icons">
+            <div class="fa fa-bars" id="menu-btn"></div>
+            <a href="search.html">
+                <div class="fa fa-search" id="search-btn"></div>
+            </a>
+            <a href="checkout.html">
+                <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            </a>
+            <a href="login.html">
+                <div class="fa fa-user" id="login-btn"></div>
+            </a>
+        </div>
+    </header>
+    <!-- End Header Section -->
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-form-container">
+                <h1 class="login-heading">Welcome to Groco!</h1>
+                <p class="login-subheading">Sign in with Google to continue shopping</p>
+                <div class="google-login-container">
+                    <button id="google-login-btn" class="google-btn">
+                        <i class="fa fa-google"></i> Sign in with Google
+                    </button>
+                </div>
+                <div class="login-benefits">
+                    <h3>Benefits of signing in:</h3>
+                    <ul>
+                        <li><i class="fa fa-check-circle"></i> Track your orders</li>
+                        <li><i class="fa fa-check-circle"></i> Save your favorite items</li>
+                        <li><i class="fa fa-check-circle"></i> Get personalized recommendations</li>
+                        <li><i class="fa fa-check-circle"></i> Faster checkout experience</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="login-image">
+                <img src="image/login-image.jpg" alt="Fresh Groceries">
+                <div class="login-image-text">
+                    <h2>Fresh Groceries Delivered to Your Doorstep</h2>
+                    <p>Shop with us for the best quality organic products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Login Section -->
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Groco <i class="fa fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media handlers. All the links are given below.</p>
+                <div class="share">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#" class="links"><i class="fa fa-phone"></i> +91 9875496843</a>
+                <a href="#" class="links"><i class="fa fa-phone"></i> +91 9853467876</a>
+                <a href="#" class="links"><i class="fa fa-envelope"></i> support@groco.com</a>
+                <a href="#" class="links"><i class="fa fa-map-marker"></i> Pune, India-400004</a>
+            </div>
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="index.html" class="links"><i class="fa fa-arrow-right"></i> Home</a>
+                <a href="index.html#features" class="links"><i class="fa fa-arrow-right"></i> Features</a>
+                <a href="index.html#products" class="links"><i class="fa fa-arrow-right"></i> Products</a>
+                <a href="#" class="links"><i class="fa fa-arrow-right"></i> Categories</a>
+                <a href="index.html#review" class="links"><i class="fa fa-arrow-right"></i> Review</a>
+                <a href="index.html#blogs" class="links"><i class="fa fa-arrow-right"></i> Blogs</a>
+            </div>
+            <div class="box">
+                <h3>Newsletter</h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" placeholder="Your Email" class="email">
+                <input type="submit" value="Subscribe" class="btn" style="width:150px;">
+                <img src="image/payment.png" class="payment-img" alt="Payment Methods">
+            </div>
+        </div>
+        <div class="credit">Created by <span>cyber warriors</span> | All rights reserved</div>
+    </section>
+    <!-- End Footer Section -->
+
+    <!-- Firebase SDK Scripts -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js"></script>
+    <!-- Link to the updated login.js file -->
+    <script type="module" src="js/login.js"></script>
+</body>
+
+</html>

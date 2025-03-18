@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits - Grocery Store</title>
+
+    <link rel="icon" type="image/icon" href="image/favicon.png">
+
+    <!--code for font awesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--code for linking css file-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!--header section-->
+    <header class="header">
+        <a href="index.html" class="logo"><i class="fa fa-shopping-basket" aria-hidden="true"></i> grocery</a>
+
+        <nav class="navbar">
+            <a href="index.html">home</a>
+            <a href="index.html#features">features</a>
+            <a href="index.html#products">products</a>
+            <a href="index.html#review">review</a>
+            <a href="index.html#blogs">blogs</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fa fa-bars" id="menu-btn"></div>
+            <a href="search.html">
+                <div class="fa fa-search" id="search-btn"></div>
+            </a>
+            <a href="checkout.html">
+                <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            </a>
+            <a href="login.html">
+                <div class="fa fa-user" id="login-btn"></div>
+            </a>
+        </div>
+    </header>
+    <!--header section-->
+
+    <!-- Category Search Section -->
+    <section class="category-search">
+        <h1 class="headding">fru<span>its</span></h1>
+
+        <div class="category-search-container">
+            <input type="text" id="category-search-input" placeholder="Search fruits...">
+            <button class="btn" id="category-search-btn">Search</button>
+        </div>
+    </section>
+    <!-- End Category Search Section -->
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="products-container" id="products-container">
+            <!-- Fruit items -->
+            <div class="card" data-name="apple">
+                <div class="image">
+                    <img src="image/apple.jpg" alt="Apple">
+                </div>
+                <div class="title">
+                    <h1>Apple</h1>
+                    <div class="price">₹130.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit1">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit1" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="apple" data-name="Apple" data-price="130.00"
+                        data-image="image/apple.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="orange">
+                <div class="image">
+                    <img src="image/orange.jpg" alt="Orange">
+                </div>
+                <div class="title">
+                    <h1>Orange</h1>
+                    <div class="price">₹75.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit2">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit2" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="orange" data-name="Orange" data-price="75.00"
+                        data-image="image/orange.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="grapes">
+                <div class="image">
+                    <img src="image/grapes.jpg" alt="Grapes">
+                </div>
+                <div class="title">
+                    <h1>Grapes</h1>
+                    <div class="price">₹60.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit3">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit3" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="grapes" data-name="Grapes" data-price="60.00"
+                        data-image="image/grapes.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="watermelon">
+                <div class="image">
+                    <img src="image/watermelon.jpg" alt="Watermelon">
+                </div>
+                <div class="title">
+                    <h1>Watermelon</h1>
+                    <div class="price">₹30.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit4">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit4" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="watermelon" data-name="Watermelon" data-price="30.00"
+                        data-image="image/watermelon.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="pomegranate">
+                <div class="image">
+                    <img src="image/pomegranate.jpg" alt="Pomegranate">
+                </div>
+                <div class="title">
+                    <h1>Pomegranate</h1>
+                    <div class="price">₹129.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit5">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit5" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="pomegranate" data-name="Pomegranate" data-price="129.00"
+                        data-image="image/pomegranate.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="papaya">
+                <div class="image">
+                    <img src="image/papaya.jpg" alt="Papaya">
+                </div>
+                <div class="title">
+                    <h1>Papaya</h1>
+                    <div class="price">₹96.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit6">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit6" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="papaya" data-name="Papaya" data-price="96.00"
+                        data-image="image/papaya.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="mango">
+                <div class="image">
+                    <img src="image/mango.jpg" alt="Mango">
+                </div>
+                <div class="title">
+                    <h1>Mango</h1>
+                    <div class="price">₹150.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit7">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit7" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="mango" data-name="Mango" data-price="150.00"
+                        data-image="image/mango.jpg">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="card" data-name="strawberry">
+                <div class="image">
+                    <img src="image/strawberry.jpg" alt="Strawberry">
+                </div>
+                <div class="title">
+                    <h1>Strawberry</h1>
+                    <div class="price">₹200.00/1kg</div>
+                    <div class="qyt"></div><br>
+                    <div class="des">
+                        <label for="quantity_fruit8">
+                            Quantity:
+                        </label>
+                        <input type="number" id="quantity_fruit8" value="1" min="1">
+                    </div>
+                    <button class="add-to-cart-btn" data-id="strawberry" data-name="Strawberry" data-price="200.00"
+                        data-image="image/strawberry.jpg">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Products Section -->
+
+    <!--our footer section-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3> Groco <i class="fa fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media handlers. All
+                    the links are given below.
+                </p>
+                <div class="share">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3> contact info </h3>
+                <a href="#" class="links"> <i class="fa fa-phone"></i> +91 9875496843 </a>
+                <a href="#" class="links"> <i class="fa fa-phone"></i> +91 9853467876 </a>
+                <a href="#" class="links"> <i class="fa fa-envelope"></i> support@groco.com</a>
+                <a href="#" class="links"> <i class="fa fa-map-marker"></i> pune, india-400004 </a>
+            </div>
+
+            <div class="box">
+                <h3> Quick Links </h3>
+                <a href="index.html" class="links"> <i class="fa fa-arrow-right"></i> Home </a>
+                <a href="index.html#features" class="links"> <i class="fa fa-arrow-right"></i> Features </a>
+                <a href="index.html#products" class="links"> <i class="fa fa-arrow-right"></i> Products </a>
+                <a href="#" class="links"> <i class="fa fa-arrow-right"></i> Categories </a>
+                <a href="index.html#review" class="links"> <i class="fa fa-arrow-right"></i> Review </a>
+                <a href="index.html#blogs" class="links"> <i class="fa fa-arrow-right"></i> Blogs </a>
+            </div>
+
+            <div class="box">
+                <h3>Newsletter </h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" placeholder="your Email" class="email">
+                <input type="submit" value="Subscribe" class="btn" style="width:150px;">
+                <img src="image/payment.png" class="payment-img" alt="Payment Methods">
+            </div>
+        </div>
+        <div class="credit">created by <span>cyber warriors</span> | all rights reserved</div>
+    </section>
+    <!--our footer section-->
+
+    <script src="js/script.js"></script>
+    <script src="js/category-search.js"></script>
+</body>
+
+</html>

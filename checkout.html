@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Grocery Store</title>
+
+    <link rel="icon" type="image/icon" href="image/favicon.png">
+
+    <!--code for font awesome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--code for linking css file-->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <!--header section-->
+    <header class="header">
+        <a href="index.html" class="logo"><i class="fa fa-shopping-basket" aria-hidden="true"></i> grocery</a>
+
+        <nav class="navbar">
+            <a href="index.html">home</a>
+            <a href="index.html#features">features</a>
+            <a href="index.html#products">products</a>
+            <a href="index.html#review">review</a>
+            <a href="index.html#blogs">blogs</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fa fa-bars" id="menu-btn"></div>
+            <div class="fa fa-search" id="search-btn"></div>
+            <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            <div class="fa fa-user" id="login-btn"></div>
+        </div>
+
+        <form class="search-form" action="search.html" method="get">
+            <input type="search" id="search-box" name="query" placeholder="Search Here....">
+            <label for="search-box" class="fa fa-search" id="search-submit"></label>
+        </form>
+
+        <div class="shopping-cart">
+            <div id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="total" id="cart-total">total : $0.00/-</div>
+            <a href="checkout.html" class="btn">Checkout</a>
+        </div>
+
+        <form action="login.html" class="login-form">
+            <h3>login now</h3>
+            <input type="email" placeholder="your email" class="box">
+            <input type="password" placeholder="your password" class="box">
+
+            <p>Forgot Your Password <a href="forgotpass.html"> Click Here</a></p>
+            <p>Don't Have An Account <a href="create.html"> Create Now</a></p>
+            <input type="submit" value="Login Now" class="btn" style="width:150px;">
+        </form>
+    </header>
+    <!--header section-->
+
+    <!-- Checkout Section -->
+    <section class="checkout-section">
+        <h1 class="headding">check<span>out</span></h1>
+
+        <div class="checkout-container">
+            <div class="cart-items-container">
+                <h2>Your Cart Items</h2>
+                <div class="cart-items-list" id="checkout-items">
+                    <!-- Cart items will be dynamically added here -->
+                    <p class="empty-cart-message">Your cart is empty.</p>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Shipping:</span>
+                    <span id="shipping">$5.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Tax:</span>
+                    <span id="tax">$0.00</span>
+                </div>
+                <div class="summary-item total">
+                    <span>Total:</span>
+                    <span id="total">$5.00</span>
+                </div>
+
+                <div class="checkout-actions">
+                    <button class="btn" id="update-cart">Update Cart</button>
+                    <a href="payment.html" class="btn" id="proceed-to-payment">Proceed to Payment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Checkout Section -->
+
+    <!--our footer section-->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3> Groco <i class="fa fa-shopping-basket"></i></h3>
+                <p>Feel free to follow us on our social media handlers. All
+                    the links are given below.
+                </p>
+                <div class="share">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3> contact info </h3>
+                <a href="#" class="links"> <i class="fa fa-phone"></i> +91 9875496843 </a>
+                <a href="#" class="links"> <i class="fa fa-phone"></i> +91 9853467876 </a>
+                <a href="#" class="links"> <i class="fa fa-envelope"></i> support@groco.com</a>
+                <a href="#" class="links"> <i class="fa fa-map-marker"></i> pune, india-400004 </a>
+            </div>
+
+            <div class="box">
+                <h3> Quick Links </h3>
+                <a href="index.html" class="links"> <i class="fa fa-arrow-right"></i> Home </a>
+                <a href="index.html#features" class="links"> <i class="fa fa-arrow-right"></i> Features </a>
+                <a href="index.html#products" class="links"> <i class="fa fa-arrow-right"></i> Products </a>
+                <a href="#" class="links"> <i class="fa fa-arrow-right"></i> Categories </a>
+                <a href="index.html#review" class="links"> <i class="fa fa-arrow-right"></i> Review </a>
+                <a href="index.html#blogs" class="links"> <i class="fa fa-arrow-right"></i> Blogs </a>
+            </div>
+
+            <div class="box">
+                <h3>Newsletter </h3>
+                <p>Subscribe for latest updates</p>
+                <input type="email" placeholder="your Email" class="email">
+                <input type="submit" value="Subscribe" class="btn" style="width:150px;">
+                <img src="image/payment.png" class="payment-img" alt="Payment Methods">
+            </div>
+        </div>
+        <div class="credit">created by <span>cyber warriors</span> | all rights reserved</div>
+    </section>
+    <!--our footer section-->
+
+    <script src="js/script.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+
+</html>
