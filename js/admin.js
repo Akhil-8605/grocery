@@ -31,18 +31,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// DOM Elements
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
-const usersTableBody = document.getElementById("users-table-body");
+// DOM Elements for order management
 const ordersTableBody = document.getElementById("orders-table-body");
-const usersSkeleton = document.getElementById("users-skeleton");
 const ordersSkeleton = document.getElementById("orders-skeleton");
-const noUsers = document.getElementById("no-users");
 const noOrders = document.getElementById("no-orders");
-const userSearchInput = document.getElementById("user-search");
 const orderSearchInput = document.getElementById("order-search");
-const userSearchBtn = document.getElementById("user-search-btn");
 const orderSearchBtn = document.getElementById("order-search-btn");
 const logoutBtn = document.getElementById("logout-btn");
 const orderDetailsModal = document.getElementById("order-details-modal");
@@ -55,9 +48,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     document.getElementById("admin-name").textContent =
       user.displayName || "Admin";
-    // Only load data if the logged-in user is the admin
     if (user.email === "akhileshadam186@gmail.com") {
-      loadUsers();
       loadOrders();
     } else {
       showAccessDenied();
@@ -85,46 +76,6 @@ function showAccessDenied() {
   }
 }
 
-// Tab functionality
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    tabButtons.forEach((btn) => btn.classList.remove("active"));
-    tabContents.forEach((content) => content.classList.remove("active"));
-    button.classList.add("active");
-    const tabId = button.getAttribute("data-tab");
-    document.getElementById(`${tabId}-tab`).classList.add("active");
-    if (tabId === "users") {
-      loadUsers();
-    } else if (tabId === "orders") {
-      loadOrders();
-    }
-  });
-});
-
-// Search functionality for users
-userSearchBtn.addEventListener("click", () => {
-  const searchTerm = userSearchInput.value.trim().toLowerCase();
-  filterUsers(searchTerm);
-});
-userSearchInput.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    const searchTerm = userSearchInput.value.trim().toLowerCase();
-    filterUsers(searchTerm);
-  }
-});
-
-// Search functionality for orders
-orderSearchBtn.addEventListener("click", () => {
-  const searchTerm = orderSearchInput.value.trim().toLowerCase();
-  filterOrders(searchTerm);
-});
-orderSearchInput.addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    const searchTerm = orderSearchInput.value.trim().toLowerCase();
-    filterOrders(searchTerm);
-  }
-});
-
 // Logout functionality
 logoutBtn.addEventListener("click", () => {
   signOut(auth)
@@ -148,55 +99,17 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// Load Users from Firestore
-async function loadUsers() {
-  if (!usersTableBody || !usersSkeleton) return;
-  try {
-    usersSkeleton.style.display = "block";
-    document.getElementById("users-table").style.display = "none";
-    noUsers.style.display = "none";
-    const usersRef = collection(db, "users");
-    const q = query(usersRef, orderBy("lastLogin", "desc"));
-    const querySnapshot = await getDocs(q);
-    console.log("Number of users fetched:", querySnapshot.size);
-    usersTableBody.innerHTML = "";
-    if (querySnapshot.empty) {
-      usersSkeleton.style.display = "none";
-      document.getElementById("users-table").style.display = "none";
-      noUsers.style.display = "flex";
-      return;
-    }
-    querySnapshot.forEach((doc) => {
-      const userData = doc.data();
-      const row = document.createElement("tr");
-      const lastLogin =
-        userData.lastLogin && userData.lastLogin.seconds
-          ? new Date(userData.lastLogin.seconds * 1000).toLocaleString()
-          : "Never";
-      row.innerHTML = `
-        <td>${userData.displayName || "N/A"}</td>
-        <td>${userData.email || "N/A"}</td>
-        <td>${lastLogin}</td>
-        <td>
-          <button class="action-btn view-btn" data-id="${doc.id}">View</button>
-          <button class="action-btn delete-btn" data-id="${
-            doc.id
-          }">Delete</button>
-        </td>
-      `;
-      usersTableBody.appendChild(row);
-    });
-    addUserActionListeners();
-    usersSkeleton.style.display = "none";
-    document.getElementById("users-table").style.display = "table";
-  } catch (error) {
-    console.error("Error loading users:", error);
-    usersSkeleton.style.display = "none";
-    document.getElementById("users-table").style.display = "none";
-    noUsers.style.display = "flex";
-    noUsers.querySelector("p").textContent = "Error loading users";
+// Search functionality for orders
+orderSearchBtn.addEventListener("click", () => {
+  const searchTerm = orderSearchInput.value.trim().toLowerCase();
+  filterOrders(searchTerm);
+});
+orderSearchInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    const searchTerm = orderSearchInput.value.trim().toLowerCase();
+    filterOrders(searchTerm);
   }
-}
+});
 
 // Load Orders from Firestore
 async function loadOrders() {
@@ -245,31 +158,6 @@ async function loadOrders() {
   }
 }
 
-// Filter Users
-function filterUsers(searchTerm) {
-  const rows = usersTableBody.querySelectorAll("tr");
-  let hasVisibleRows = false;
-  rows.forEach((row) => {
-    const name = row.cells[0].textContent.toLowerCase();
-    const email = row.cells[1].textContent.toLowerCase();
-    if (name.includes(searchTerm) || email.includes(searchTerm)) {
-      row.style.display = "";
-      hasVisibleRows = true;
-    } else {
-      row.style.display = "none";
-    }
-  });
-  if (hasVisibleRows) {
-    document.getElementById("users-table").style.display = "table";
-    noUsers.style.display = "none";
-  } else {
-    document.getElementById("users-table").style.display = "none";
-    noUsers.style.display = "flex";
-    noUsers.querySelector("p").textContent =
-      "No users found matching your search";
-  }
-}
-
 // Filter Orders
 function filterOrders(searchTerm) {
   const rows = ordersTableBody.querySelectorAll("tr");
@@ -293,52 +181,6 @@ function filterOrders(searchTerm) {
     noOrders.querySelector("p").textContent =
       "No orders found matching your search";
   }
-}
-
-// Add User Action Listeners
-function addUserActionListeners() {
-  document.querySelectorAll("#users-table-body .view-btn").forEach((button) => {
-    button.addEventListener("click", async () => {
-      const userId = button.getAttribute("data-id");
-      try {
-        const userDoc = await getDoc(doc(db, "users", userId));
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
-          alert(
-            `User Details:\nName: ${userData.displayName || "N/A"}\nEmail: ${
-              userData.email || "N/A"
-            }\nLast Login: ${
-              userData.lastLogin && userData.lastLogin.seconds
-                ? new Date(userData.lastLogin.seconds * 1000).toLocaleString()
-                : "Never"
-            }`
-          );
-        } else {
-          alert("User not found");
-        }
-      } catch (error) {
-        console.error("Error getting user:", error);
-        alert("Error getting user details");
-      }
-    });
-  });
-  document
-    .querySelectorAll("#users-table-body .delete-btn")
-    .forEach((button) => {
-      button.addEventListener("click", async () => {
-        if (confirm("Are you sure you want to delete this user?")) {
-          const userId = button.getAttribute("data-id");
-          try {
-            await deleteDoc(doc(db, "users", userId));
-            alert("User deleted successfully");
-            loadUsers();
-          } catch (error) {
-            console.error("Error deleting user:", error);
-            alert("Error deleting user");
-          }
-        }
-      });
-    });
 }
 
 // Add Order Action Listeners
