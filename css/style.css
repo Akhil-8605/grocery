@@ -100,8 +100,17 @@ section {
   color: var(--black);
 }
 
+.navbar{
+  display: flex;
+  align-items: center;
+}
+
 .header .navbar a:hover {
   color: var(--green);
+}
+
+.header .icons {
+  display: flex;
 }
 
 .header .icons div {

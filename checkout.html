@@ -20,42 +20,25 @@
         <a href="index.html" class="logo"><i class="fa fa-shopping-basket" aria-hidden="true"></i> grocery</a>
 
         <nav class="navbar">
-            <a href="index.html">home</a>
-            <a href="index.html#features">features</a>
-            <a href="index.html#products">products</a>
-            <a href="index.html#review">review</a>
-            <a href="index.html#blogs">blogs</a>
+            <a href="#home">home</a>
+            <a href="#features">features</a>
+            <a href="#products">products</a>
+            <a href="#review">review</a>
+            <a href="#blogs">blogs</a>
         </nav>
 
-        <div class="icons">
+        <div class="icons" style="gap: 10px;">
             <div class="fa fa-bars" id="menu-btn"></div>
-            <div class="fa fa-search" id="search-btn"></div>
-            <div class="fa fa-shopping-cart" id="cart-btn"></div>
-            <div class="fa fa-user" id="login-btn"></div>
+            <a href="search.html">
+                <div class="fa fa-search" id="search-btn"></div>
+            </a>
+            <a href="checkout.html">
+                <div class="fa fa-shopping-cart" id="cart-btn"></div>
+            </a>
+            <a href="login.html">
+                <div class="fa fa-user" id="login-btn"></div>
+            </a>
         </div>
-
-        <form class="search-form" action="search.html" method="get">
-            <input type="search" id="search-box" name="query" placeholder="Search Here....">
-            <label for="search-box" class="fa fa-search" id="search-submit"></label>
-        </form>
-
-        <div class="shopping-cart">
-            <div id="cart-items">
-                <!-- Cart items will be dynamically added here -->
-            </div>
-            <div class="total" id="cart-total">total : $0.00/-</div>
-            <a href="checkout.html" class="btn">Checkout</a>
-        </div>
-
-        <form action="login.html" class="login-form">
-            <h3>login now</h3>
-            <input type="email" placeholder="your email" class="box">
-            <input type="password" placeholder="your password" class="box">
-
-            <p>Forgot Your Password <a href="forgotpass.html"> Click Here</a></p>
-            <p>Don't Have An Account <a href="create.html"> Create Now</a></p>
-            <input type="submit" value="Login Now" class="btn" style="width:150px;">
-        </form>
     </header>
     <!--header section-->
 
@@ -147,6 +130,7 @@
     <!--our footer section-->
 
     <script src="js/script.js"></script>
+    <script src="js/header.js"></script>
     <script src="js/checkout.js"></script>
 </body>
 

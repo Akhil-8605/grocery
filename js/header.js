@@ -19,13 +19,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Create user name element
     const userName = document.createElement("span");
-    userName.className = "user-name";
-    userName.textContent = user.displayName;
+    // userName.className = "user-name";
+    userName.style.fontSize = "15px";
+    // userName.textContent = user.displayName;
 
     // Create logout button
-    const logoutBtn = document.createElement("button");
+    const logoutBtn = document.createElement("div");
     logoutBtn.className = "logout-btn";
-    logoutBtn.innerHTML = '<i class="fa fa-sign-out"></i>';
+    logoutBtn.style.display= "flex";
+    logoutBtn.style.textAlign = "left"
+    logoutBtn.style.marginLeft= "-20px"
+    logoutBtn.style.minWidth = "150px"
+    logoutBtn.style.maxWidth = "400px"
+    // logoutBtn.style.fontSize = "10px"
+    logoutBtn.innerHTML = `<span style="font-size: 15px;">${user.displayName} <i style="font-size: 18px;;" class="fa fa-sign-out"></i></span>`;
     logoutBtn.title = "Logout";
 
     // Add event listener to logout button
