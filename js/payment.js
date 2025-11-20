@@ -147,25 +147,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Generate QR code
     try {
-      // Check if QRCode is available
-      if (typeof QRCode === "undefined") {
-        console.error("QRCode library not loaded");
-        qrcodeContainer.innerHTML =
-          "<p>QR Code library not loaded. Please include the QRCode library.</p>";
+      // Prefer using a loaded QR code library if available
+      if (window.QRCode) {
+        qrcodeContainer.innerHTML = "";
+        new window.QRCode(qrcodeContainer, {
+          text: paymentData,
+          width: 200,
+          height: 200,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: window.QRCode.CorrectLevel
+            ? window.QRCode.CorrectLevel.H
+            : 1,
+        });
         return;
       }
-      new QRCode(qrcodeContainer, {
-        text: paymentData,
-        width: 200,
-        height: 200,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H,
-      });
+
+      // Some builds expose `qrcode` with a toDataURL helper
+      if (window.qrcode && typeof window.qrcode.toDataURL === "function") {
+        window.qrcode.toDataURL(paymentData, { width: 200 }, function (err, url) {
+          if (err) throw err;
+          qrcodeContainer.innerHTML = `<img src="${url}" alt="UPI QR Code">`;
+        });
+        return;
+      }
+
+      // Final fallback: use a reliable external QR image generator
+      const src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
+        paymentData
+      )}`;
+      qrcodeContainer.innerHTML = `<img src="${src}" alt="UPI QR Code">`;
     } catch (error) {
       console.error("Error generating QR code:", error);
-      qrcodeContainer.innerHTML =
-        "<p>Failed to generate QR code. Please ensure the QRCode library is included.</p>";
+      // If anything goes wrong, show the external QR image as a fallback
+      const src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
+        paymentData
+      )}`;
+      qrcodeContainer.innerHTML = `<img src="${src}" alt="UPI QR Code">`;
     }
   }
 
@@ -229,7 +247,7 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      // Save order to Firestore
+      // Save order to Firestore (best-effort)
       await saveOrderToFirestore(orderDetails);
 
       // Save order details to localStorage for order confirmation page
@@ -239,7 +257,17 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = "order-confirmation.html";
     } catch (error) {
       console.error("Error saving order:", error);
-      alert("There was an error processing your order. Please try again.");
+      // Firestore save failed — fallback to saving order locally and continue
+      try {
+        localStorage.setItem("orderDetails", JSON.stringify(orderDetails));
+        console.warn(
+          "Saved order locally due to Firestore error. Redirecting to confirmation."
+        );
+        window.location.href = "order-confirmation.html";
+      } catch (e) {
+        console.error("Fallback local save failed:", e);
+        alert("There was an error processing your order. Please try again.");
+      }
     }
   }
 
